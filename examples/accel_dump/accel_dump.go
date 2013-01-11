@@ -4,7 +4,6 @@ import (
 	"bitbucket.org/gmcbay/i2c/MMA7455"
 	"log"
 	"math"
-	"runtime"
 )
 
 // Used as a stupidly coarse jitter filter, if the value on an
