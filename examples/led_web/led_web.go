@@ -1,11 +1,12 @@
 package main
 
 import (
-	"bitbucket.org/gmcbay/i2c/HT16K33"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/joeblubaugh/adafruit-led/HT16K33"
 )
 
 var devices []*HT16K33.EightByEight

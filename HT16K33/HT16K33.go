@@ -1,8 +1,9 @@
 package HT16K33
 
 import (
-	"bitbucket.org/gmcbay/i2c"
 	"fmt"
+
+	"github.com/joeblubaugh/adafruit-led/i2c"
 )
 
 const (

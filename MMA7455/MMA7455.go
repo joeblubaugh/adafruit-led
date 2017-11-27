@@ -1,7 +1,7 @@
 package MMA7455
 
 import (
-	"bitbucket.org/gmcbay/i2c"
+	"github.com/joeblubaugh/adafruit-led/i2c"
 )
 
 const (

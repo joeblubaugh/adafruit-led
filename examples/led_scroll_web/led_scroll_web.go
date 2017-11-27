@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bitbucket.org/gmcbay/i2c/HT16K33"
 	"bytes"
 	"encoding/json"
 	"fmt"
@@ -12,6 +11,8 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"github.com/joeblubaugh/adafruit-led/HT16K33"
 )
 
 // markit on demand json results look like this:

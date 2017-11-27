@@ -1,5 +1,7 @@
 package i2c
 
+// TODO: Consider replacing with golang.org/x/exp/io/i2c
+
 import (
 	"fmt"
 	"os"

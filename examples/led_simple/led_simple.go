@@ -1,9 +1,10 @@
 package main
 
 import (
-	"bitbucket.org/gmcbay/i2c/HT16K33"
 	"log"
 	"time"
+
+	"github.com/joeblubaugh/adafruit-led/HT16K33"
 )
 
 func main() {
