@@ -23,7 +23,9 @@ type Device struct {
 	bus             *i2c.I2CBus
 	busNum          byte
 	addr            byte
-	buffer          [8]uint16
+	// TODO: Update buffer to be a byte array.
+	// TODO: Add API methods for buffer access instead of direct manip.
+	buffer [8]uint16
 }
 
 func (bp *Device) Init(addr, busNum byte) (err error) {
