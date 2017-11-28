@@ -16,14 +16,20 @@ const (
 	BLINKRATE_HALFHZ       = 0x03
 )
 
-// General HT16K33 controller interface
-
+// Device is the General HT16K33 controller interface
 type Device struct {
 	ImmediateUpdate bool
 	bus             *i2c.I2CBus
 	busNum          byte
 	addr            byte
-	buffer          [8]uint16
+
+	// buffer mirrors the internal device Display RAM. See:
+	// https://cdn-shop.adafruit.com/datasheets/ht16K33v110.pdf
+	//
+	// Each entry in the buffer is a complete "Row" in the
+	// Device, for ROW0 - ROW15. However, each column must be
+	// written on the I2C interface as two bytes.
+	buffer [8]uint16
 }
 
 func (bp *Device) Init(addr, busNum byte) (err error) {
@@ -76,13 +82,13 @@ func (bp *Device) SetBlinkRate(blinkRate byte) (err error) {
 	return
 }
 
-func (bp *Device) SetBufferRow(row byte, value uint16) (err error) {
+func (bp *Device) SetBufferRow(row byte, word uint16) (err error) {
 	if row < 0 || row > 7 {
 		err = fmt.Errorf("i2c: Invalid row: %v\n", row)
 		return
 	}
 
-	bp.buffer[row] = value
+	bp.buffer[row] = word
 
 	if bp.ImmediateUpdate {
 		err = bp.WriteDisplay()

@@ -18,6 +18,7 @@ type EightByEight struct {
 func NewEightByEight(addr, bus byte) (e *EightByEight, err error) {
 	e = new(EightByEight)
 	err = e.Init(addr, bus)
+
 	return
 }
 
@@ -31,6 +32,10 @@ func (e *EightByEight) SetPixel(x, y byte, on bool) (err error) {
 		return
 	}
 
+	// This `inverts` x, but seems wrong.
+	// This seems to be due to the pinout requirements
+	// of the layout?
+	// 0->7, 1->0, 2->1, 3->2, 4->3, 5->4, 6->5, 7->6
 	x = (x + 7) % 8
 
 	if on {
