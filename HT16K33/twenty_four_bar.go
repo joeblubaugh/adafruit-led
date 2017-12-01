@@ -6,10 +6,10 @@ const (
 	barMin uint = 0
 	barMax uint = 23
 
-	barOff    = 0x0
-	barGreen  = 0x1
-	barRed    = 0x2
-	barYellow = 0x3
+	BarOff    = 0x0
+	BarGreen  = 0x1
+	BarRed    = 0x2
+	BarYellow = 0x3
 )
 
 // TwentyFourBar models a 24-bar LED Bar Graph backpack.
@@ -47,14 +47,14 @@ func (t *TwentyFourBar) SetBar(bar, color byte) error {
 	}
 
 	var newBuffer uint16 = t.buffer[row]
-	if color&barRed > 0 {
+	if color&BarRed > 0 {
 		newBuffer = newBuffer | 1<<offset
 	} else {
 		newBuffer = newBuffer & ^(1 << offset)
 	}
 
 	var offsetGreen uint16 = 8
-	if color&barGreen > 0 {
+	if color&BarGreen > 0 {
 		newBuffer = newBuffer | 1<<(offset+offsetGreen)
 	} else {
 		newBuffer = newBuffer & ^(1 << (offset + offsetGreen))
